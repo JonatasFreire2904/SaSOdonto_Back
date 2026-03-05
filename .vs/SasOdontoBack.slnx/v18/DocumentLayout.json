@@ -1,0 +1,160 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Jonatas\\source\\repos\\SasOdontoBack\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AF8BF2DD-2315-4537-9B25-3513B7A4570A}|Api\\Api.csproj|c:\\users\\jonatas\\source\\repos\\sasodontoback\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF8BF2DD-2315-4537-9B25-3513B7A4570A}|Api\\Api.csproj|solutionrelative:api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10A6396E-0548-4436-B1BC-7FFA1A779E23}|Domain\\Domain.csproj|c:\\users\\jonatas\\source\\repos\\sasodontoback\\domain\\entities\\userclinic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10A6396E-0548-4436-B1BC-7FFA1A779E23}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\userclinic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10A6396E-0548-4436-B1BC-7FFA1A779E23}|Domain\\Domain.csproj|c:\\users\\jonatas\\source\\repos\\sasodontoback\\domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10A6396E-0548-4436-B1BC-7FFA1A779E23}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10A6396E-0548-4436-B1BC-7FFA1A779E23}|Domain\\Domain.csproj|c:\\users\\jonatas\\source\\repos\\sasodontoback\\domain\\entities\\clinic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10A6396E-0548-4436-B1BC-7FFA1A779E23}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\clinic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10A6396E-0548-4436-B1BC-7FFA1A779E23}|Domain\\Domain.csproj|c:\\users\\jonatas\\source\\repos\\sasodontoback\\domain\\enums\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10A6396E-0548-4436-B1BC-7FFA1A779E23}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10A6396E-0548-4436-B1BC-7FFA1A779E23}|Domain\\Domain.csproj|c:\\users\\jonatas\\source\\repos\\sasodontoback\\domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{10A6396E-0548-4436-B1BC-7FFA1A779E23}|Domain\\Domain.csproj|solutionrelative:domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{384B91E3-58D2-45A1-B218-40BE8CA2C7A3}|Shared\\Shared.csproj|c:\\users\\jonatas\\source\\repos\\sasodontoback\\shared\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{384B91E3-58D2-45A1-B218-40BE8CA2C7A3}|Shared\\Shared.csproj|solutionrelative:shared\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85AD2C0-372D-4862-8860-36465E17DA71}|Infrastructure\\Infrastructure.csproj|c:\\users\\jonatas\\source\\repos\\sasodontoback\\infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F85AD2C0-372D-4862-8860-36465E17DA71}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Jonatas\\source\\repos\\SasOdontoBack\\Api\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Api\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Jonatas\\source\\repos\\SasOdontoBack\\Api\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Api\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T12:38:41.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Clinic.cs",
+              "DocumentMoniker": "C:\\Users\\Jonatas\\source\\repos\\SasOdontoBack\\Domain\\Entities\\Clinic.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Clinic.cs",
+              "ToolTip": "C:\\Users\\Jonatas\\source\\repos\\SasOdontoBack\\Domain\\Entities\\Clinic.cs",
+              "RelativeToolTip": "Domain\\Entities\\Clinic.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T12:35:11.8Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserClinic.cs",
+              "DocumentMoniker": "C:\\Users\\Jonatas\\source\\repos\\SasOdontoBack\\Domain\\Entities\\UserClinic.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\UserClinic.cs",
+              "ToolTip": "C:\\Users\\Jonatas\\source\\repos\\SasOdontoBack\\Domain\\Entities\\UserClinic.cs",
+              "RelativeToolTip": "Domain\\Entities\\UserClinic.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T12:34:39.728Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserRole.cs",
+              "DocumentMoniker": "C:\\Users\\Jonatas\\source\\repos\\SasOdontoBack\\Domain\\Enums\\UserRole.cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\UserRole.cs",
+              "ToolTip": "C:\\Users\\Jonatas\\source\\repos\\SasOdontoBack\\Domain\\Enums\\UserRole.cs",
+              "RelativeToolTip": "Domain\\Enums\\UserRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T12:32:03.614Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Jonatas\\source\\repos\\SasOdontoBack\\Domain\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\User.cs",
+              "ToolTip": "C:\\Users\\Jonatas\\source\\repos\\SasOdontoBack\\Domain\\Entities\\User.cs",
+              "RelativeToolTip": "Domain\\Entities\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T12:30:16.469Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Domain",
+              "DocumentMoniker": "C:\\Users\\Jonatas\\source\\repos\\SasOdontoBack\\Domain\\Domain.csproj",
+              "RelativeDocumentMoniker": "Domain\\Domain.csproj",
+              "ToolTip": "C:\\Users\\Jonatas\\source\\repos\\SasOdontoBack\\Domain\\Domain.csproj",
+              "RelativeToolTip": "Domain\\Domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-04T12:29:42.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\Jonatas\\source\\repos\\SasOdontoBack\\Shared\\Class1.cs",
+              "RelativeDocumentMoniker": "Shared\\Class1.cs",
+              "ToolTip": "C:\\Users\\Jonatas\\source\\repos\\SasOdontoBack\\Shared\\Class1.cs",
+              "RelativeToolTip": "Shared\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T12:29:27.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\Jonatas\\source\\repos\\SasOdontoBack\\Infrastructure\\Class1.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Class1.cs",
+              "ToolTip": "C:\\Users\\Jonatas\\source\\repos\\SasOdontoBack\\Infrastructure\\Class1.cs",
+              "RelativeToolTip": "Infrastructure\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T12:29:12.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
