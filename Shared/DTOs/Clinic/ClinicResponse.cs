@@ -1,3 +1,5 @@
+using Domain.Enums;
+
 namespace Shared.DTOs.Clinic
 {
     public class ClinicResponse
@@ -6,7 +8,7 @@ namespace Shared.DTOs.Clinic
         public string Name { get; set; } = string.Empty;
         public string Location { get; set; } = string.Empty;
         public string? ImageUrl { get; set; }
-        public string Status { get; set; } = string.Empty;
+        public ClinicStatus Status { get; set; }
         public int TeamCount { get; set; }
     }
 }

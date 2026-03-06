@@ -75,6 +75,7 @@ namespace Api.Controllers
             return Ok(new LoginResponse
             {
                 Token = token,
+                Email = user.Email,
                 UserName = user.UserName,
                 Role = user.Role.ToString()
             });

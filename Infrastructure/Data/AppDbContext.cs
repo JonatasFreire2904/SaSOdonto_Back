@@ -10,6 +10,12 @@ namespace Infrastructure.Data
         public DbSet<User> Users => Set<User>();
         public DbSet<Clinic> Clinics => Set<Clinic>();
         public DbSet<UserClinic> UserClinics => Set<UserClinic>();
+        public DbSet<Patient> Patients => Set<Patient>();
+        public DbSet<MedicalRecord> MedicalRecords => Set<MedicalRecord>();
+        public DbSet<Appointment> Appointments => Set<Appointment>();
+        public DbSet<OdontogramEntry> OdontogramEntries => Set<OdontogramEntry>();
+        public DbSet<PatientMedia> PatientMedias => Set<PatientMedia>();
+        public DbSet<Anamnesis> Anamneses => Set<Anamnesis>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -54,6 +60,115 @@ namespace Infrastructure.Data
                 e.HasOne(uc => uc.Clinic)
                  .WithMany(c => c.UserClinics)
                  .HasForeignKey(uc => uc.ClinicId);
+            });
+
+            // Patient
+            modelBuilder.Entity<Patient>(e =>
+            {
+                e.HasKey(p => p.Id);
+                e.Property(p => p.FullName).IsRequired().HasMaxLength(200);
+                e.Property(p => p.Cpf).HasMaxLength(14);
+                e.Property(p => p.Phone).HasMaxLength(20);
+                e.Property(p => p.Email).HasMaxLength(200);
+                e.Property(p => p.Address).HasMaxLength(300);
+                e.Property(p => p.Notes).HasMaxLength(500);
+                e.Property(p => p.Gender).HasConversion<string>().HasMaxLength(10);
+
+                e.HasOne(p => p.Clinic)
+                 .WithMany()
+                 .HasForeignKey(p => p.ClinicId)
+                 .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // MedicalRecord (Prontuário)
+            modelBuilder.Entity<MedicalRecord>(e =>
+            {
+                e.HasKey(m => m.Id);
+                e.Property(m => m.Title).IsRequired().HasMaxLength(200);
+                e.Property(m => m.Description).IsRequired().HasMaxLength(2000);
+                e.Property(m => m.Type).HasConversion<string>().HasMaxLength(20);
+
+                e.HasOne(m => m.Patient)
+                 .WithMany(p => p.MedicalRecords)
+                 .HasForeignKey(m => m.PatientId)
+                 .OnDelete(DeleteBehavior.Cascade);
+
+                e.HasOne(m => m.Appointment)
+                 .WithOne(a => a.MedicalRecord)
+                 .HasForeignKey<MedicalRecord>(m => m.AppointmentId)
+                 .OnDelete(DeleteBehavior.SetNull);
+            });
+
+            // Appointment (Atendimento)
+            modelBuilder.Entity<Appointment>(e =>
+            {
+                e.HasKey(a => a.Id);
+                e.Property(a => a.Procedure).IsRequired().HasMaxLength(200);
+                e.Property(a => a.Description).HasMaxLength(1000);
+                e.Property(a => a.Notes).HasMaxLength(1000);
+                e.Property(a => a.Status).HasConversion<string>().HasMaxLength(20);
+                e.Property(a => a.Price).HasColumnType("decimal(10,2)");
+
+                e.HasOne(a => a.Patient)
+                 .WithMany(p => p.Appointments)
+                 .HasForeignKey(a => a.PatientId)
+                 .OnDelete(DeleteBehavior.Cascade);
+
+                e.HasOne(a => a.Clinic)
+                 .WithMany()
+                 .HasForeignKey(a => a.ClinicId)
+                 .OnDelete(DeleteBehavior.Restrict);
+
+                e.Property(a => a.DentistName).HasMaxLength(200);
+                e.Property(a => a.Tooth).HasMaxLength(50);
+            });
+
+            // OdontogramEntry (Odontograma)
+            modelBuilder.Entity<OdontogramEntry>(e =>
+            {
+                e.HasKey(o => o.Id);
+                e.Property(o => o.Notes).HasMaxLength(500);
+                e.Property(o => o.Status).HasConversion<string>().HasMaxLength(20);
+
+                e.HasOne(o => o.Patient)
+                 .WithMany(p => p.OdontogramEntries)
+                 .HasForeignKey(o => o.PatientId)
+                 .OnDelete(DeleteBehavior.Cascade);
+
+                e.HasIndex(o => new { o.PatientId, o.ToothNumber }).IsUnique();
+            });
+
+            // PatientMedia (Mídias do paciente)
+            modelBuilder.Entity<PatientMedia>(e =>
+            {
+                e.HasKey(m => m.Id);
+                e.Property(m => m.Name).IsRequired().HasMaxLength(200);
+                e.Property(m => m.Url).IsRequired().HasMaxLength(500);
+                e.Property(m => m.ThumbnailUrl).HasMaxLength(500);
+                e.Property(m => m.Type).HasConversion<string>().HasMaxLength(20);
+
+                e.HasOne(m => m.Patient)
+                 .WithMany(p => p.PatientMedias)
+                 .HasForeignKey(m => m.PatientId)
+                 .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // Anamnesis (Anamnese)
+            modelBuilder.Entity<Anamnesis>(e =>
+            {
+                e.HasKey(a => a.Id);
+                e.Property(a => a.Allergies).HasMaxLength(1000);
+                e.Property(a => a.Medications).HasMaxLength(1000);
+                e.Property(a => a.PreviousSurgeries).HasMaxLength(1000);
+                e.Property(a => a.FamilyHistory).HasMaxLength(1000);
+                e.Property(a => a.Observations).HasMaxLength(2000);
+
+                e.HasOne(a => a.Patient)
+                 .WithOne(p => p.Anamnesis)
+                 .HasForeignKey<Anamnesis>(a => a.PatientId)
+                 .OnDelete(DeleteBehavior.Cascade);
+
+                e.HasIndex(a => a.PatientId).IsUnique();
             });
         }
     }

@@ -25,7 +25,7 @@ namespace Api.Services
                     Name = c.Name,
                     Location = c.Location,
                     ImageUrl = c.ImageUrl,
-                    Status = c.Status.ToString().ToLower(),
+                    Status = c.Status,
                     TeamCount = c.UserClinics.Count
                 })
                 .ToListAsync();
@@ -62,7 +62,7 @@ namespace Api.Services
                 Name = clinic.Name,
                 Location = clinic.Location,
                 ImageUrl = clinic.ImageUrl,
-                Status = clinic.Status.ToString().ToLower(),
+                Status = clinic.Status,
                 TeamCount = 1
             };
         }
@@ -83,7 +83,7 @@ namespace Api.Services
                 Name = clinic.Name,
                 Location = clinic.Location,
                 ImageUrl = clinic.ImageUrl,
-                Status = clinic.Status.ToString().ToLower()
+                Status = clinic.Status
             };
         }
     }

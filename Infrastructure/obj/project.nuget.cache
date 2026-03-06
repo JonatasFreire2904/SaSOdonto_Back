@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OlBFZzb0p9c=",
+  "dgSpecHash": "AE1fbzm9ymQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jonatas\\source\\repos\\SasOdontoBack\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\Jonatas\\Documents\\GitHub\\SaSOdonto_Back\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jonatas\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Jonatas\\.nuget\\packages\\microsoft.build.framework\\18.0.2\\microsoft.build.framework.18.0.2.nupkg.sha512",

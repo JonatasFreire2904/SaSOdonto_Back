@@ -49,8 +49,19 @@ builder.Services.AddCors(options =>
 // Services
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<ClinicService>();
+builder.Services.AddScoped<PatientService>();
+builder.Services.AddScoped<MedicalRecordService>();
+builder.Services.AddScoped<AppointmentService>();
+builder.Services.AddScoped<OdontogramService>();
+builder.Services.AddScoped<PatientMediaService>();
+builder.Services.AddScoped<AnamnesisService>();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(
+            new System.Text.Json.Serialization.JsonStringEnumConverter(System.Text.Json.JsonNamingPolicy.CamelCase));
+    });
 
 // Swagger com suporte a JWT
 builder.Services.AddSwaggerGen(c =>
@@ -84,6 +95,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseStaticFiles();
 
 app.UseCors("AllowFrontend");
 
