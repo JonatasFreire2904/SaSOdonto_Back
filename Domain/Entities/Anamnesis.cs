@@ -33,5 +33,8 @@ namespace Domain.Entities
 
         public Guid PatientId { get; set; }
         public Patient Patient { get; set; } = null!;
+
+        // Campos personalizados
+        public ICollection<AnamnesisCustomField> CustomFields { get; set; } = new List<AnamnesisCustomField>();
     }
 }

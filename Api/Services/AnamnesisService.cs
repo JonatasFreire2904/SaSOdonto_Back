@@ -27,6 +27,7 @@ namespace Api.Services
                 return null;
 
             var anamnesis = await _db.Anamneses
+                .Include(a => a.CustomFields)
                 .FirstOrDefaultAsync(a => a.PatientId == patientId && a.Patient.ClinicId == clinicId);
 
             if (anamnesis == null)
@@ -45,6 +46,7 @@ namespace Api.Services
                 return null;
 
             var anamnesis = await _db.Anamneses
+                .Include(a => a.CustomFields)
                 .FirstOrDefaultAsync(a => a.PatientId == patientId);
 
             if (anamnesis == null)
@@ -73,6 +75,22 @@ namespace Api.Services
             anamnesis.Observations = request.Observations;
             anamnesis.UpdatedAt = DateTime.UtcNow;
 
+            // Campos personalizados: remove antigos e adiciona novos
+            if (anamnesis.CustomFields.Any())
+                _db.AnamnesisCustomFields.RemoveRange(anamnesis.CustomFields);
+
+            if (request.CustomFields != null)
+            {
+                foreach (var field in request.CustomFields)
+                {
+                    anamnesis.CustomFields.Add(new AnamnesisCustomField
+                    {
+                        Question = field.Question,
+                        Answer = field.Answer
+                    });
+                }
+            }
+
             await _db.SaveChangesAsync();
 
             return MapToResponse(anamnesis);
@@ -100,7 +118,13 @@ namespace Api.Services
             FamilyHistory = a.FamilyHistory,
             Observations = a.Observations,
             CreatedAt = a.CreatedAt,
-            UpdatedAt = a.UpdatedAt
+            UpdatedAt = a.UpdatedAt,
+            CustomFields = a.CustomFields.Select(f => new CustomFieldResponse
+            {
+                Id = f.Id,
+                Question = f.Question,
+                Answer = f.Answer
+            }).ToList()
         };
     }
 }

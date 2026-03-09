@@ -30,5 +30,15 @@ namespace Shared.DTOs.Anamnesis
 
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+
+        // Campos personalizados
+        public List<CustomFieldResponse> CustomFields { get; set; } = new();
+    }
+
+    public class CustomFieldResponse
+    {
+        public Guid Id { get; set; }
+        public string Question { get; set; } = string.Empty;
+        public string? Answer { get; set; }
     }
 }

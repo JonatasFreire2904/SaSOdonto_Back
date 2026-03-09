@@ -36,5 +36,18 @@ namespace Shared.DTOs.Anamnesis
 
         [MaxLength(2000)]
         public string? Observations { get; set; }
+
+        // Campos personalizados
+        public List<CustomFieldDto>? CustomFields { get; set; }
+    }
+
+    public class CustomFieldDto
+    {
+        [Required]
+        [MaxLength(500)]
+        public string Question { get; set; } = string.Empty;
+
+        [MaxLength(2000)]
+        public string? Answer { get; set; }
     }
 }

@@ -16,6 +16,7 @@ namespace Infrastructure.Data
         public DbSet<OdontogramEntry> OdontogramEntries => Set<OdontogramEntry>();
         public DbSet<PatientMedia> PatientMedias => Set<PatientMedia>();
         public DbSet<Anamnesis> Anamneses => Set<Anamnesis>();
+        public DbSet<AnamnesisCustomField> AnamnesisCustomFields => Set<AnamnesisCustomField>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -169,6 +170,19 @@ namespace Infrastructure.Data
                  .OnDelete(DeleteBehavior.Cascade);
 
                 e.HasIndex(a => a.PatientId).IsUnique();
+            });
+
+            // AnamnesisCustomField (Campos personalizados da anamnese)
+            modelBuilder.Entity<AnamnesisCustomField>(e =>
+            {
+                e.HasKey(f => f.Id);
+                e.Property(f => f.Question).IsRequired().HasMaxLength(500);
+                e.Property(f => f.Answer).HasMaxLength(2000);
+
+                e.HasOne(f => f.Anamnesis)
+                 .WithMany(a => a.CustomFields)
+                 .HasForeignKey(f => f.AnamnesisId)
+                 .OnDelete(DeleteBehavior.Cascade);
             });
         }
     }
