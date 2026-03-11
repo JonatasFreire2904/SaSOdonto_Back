@@ -17,6 +17,9 @@ namespace Infrastructure.Data
         public DbSet<PatientMedia> PatientMedias => Set<PatientMedia>();
         public DbSet<Anamnesis> Anamneses => Set<Anamnesis>();
         public DbSet<AnamnesisCustomField> AnamnesisCustomFields => Set<AnamnesisCustomField>();
+        public DbSet<TreatmentPlan> TreatmentPlans => Set<TreatmentPlan>();
+        public DbSet<Procedure> Procedures => Set<Procedure>();
+        public DbSet<ToothProcedure> ToothProcedures => Set<ToothProcedure>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -183,6 +186,50 @@ namespace Infrastructure.Data
                  .WithMany(a => a.CustomFields)
                  .HasForeignKey(f => f.AnamnesisId)
                  .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // TreatmentPlan (Plano de Tratamento)
+            modelBuilder.Entity<TreatmentPlan>(e =>
+            {
+                e.HasKey(t => t.Id);
+                e.Property(t => t.Name).IsRequired().HasMaxLength(200);
+                e.Property(t => t.Category).HasMaxLength(100);
+
+                e.HasOne(t => t.Patient)
+                 .WithMany(p => p.TreatmentPlans)
+                 .HasForeignKey(t => t.PatientId)
+                 .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // Procedure (Procedimentos)
+            modelBuilder.Entity<Procedure>(e =>
+            {
+                e.HasKey(p => p.Id);
+                e.Property(p => p.Name).IsRequired().HasMaxLength(200);
+                e.Property(p => p.Category).IsRequired().HasMaxLength(100);
+
+                e.HasOne(p => p.Clinic)
+                 .WithMany()
+                 .HasForeignKey(p => p.ClinicId)
+                 .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // ToothProcedure (Procedimentos realizados em dentes)
+            modelBuilder.Entity<ToothProcedure>(e =>
+            {
+                e.HasKey(tp => tp.Id);
+                e.Property(tp => tp.Faces).IsRequired().HasMaxLength(50);
+                e.Property(tp => tp.Notes).HasMaxLength(500);
+
+                e.HasOne(tp => tp.Patient)
+                 .WithMany(p => p.ToothProcedures)
+                 .HasForeignKey(tp => tp.PatientId)
+                 .OnDelete(DeleteBehavior.Cascade);
+
+                e.HasOne(tp => tp.Procedure)
+                 .WithMany()
+                 .HasForeignKey(tp => tp.ProcedureId)
+                 .OnDelete(DeleteBehavior.Restrict);
             });
         }
     }

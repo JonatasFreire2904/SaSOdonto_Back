@@ -55,6 +55,8 @@ builder.Services.AddScoped<AppointmentService>();
 builder.Services.AddScoped<OdontogramService>();
 builder.Services.AddScoped<PatientMediaService>();
 builder.Services.AddScoped<AnamnesisService>();
+builder.Services.AddScoped<TreatmentPlanService>();
+builder.Services.AddScoped<ProcedureService>();
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>

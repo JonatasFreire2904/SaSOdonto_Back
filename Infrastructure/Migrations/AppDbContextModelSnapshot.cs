@@ -385,6 +385,108 @@ namespace Infrastructure.Migrations
                     b.ToTable("PatientMedias");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Procedure", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("ClinicId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsDefault")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClinicId");
+
+                    b.ToTable("Procedures");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ToothProcedure", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Faces")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Notes")
+                        .HasMaxLength(500)
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("PatientId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("ProcedureId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ToothNumber")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PatientId");
+
+                    b.HasIndex("ProcedureId");
+
+                    b.ToTable("ToothProcedures");
+                });
+
+            modelBuilder.Entity("Domain.Entities.TreatmentPlan", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Category")
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("PatientId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PatientId");
+
+                    b.ToTable("TreatmentPlans");
+                });
+
             modelBuilder.Entity("Domain.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -548,6 +650,47 @@ namespace Infrastructure.Migrations
                     b.Navigation("Patient");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Procedure", b =>
+                {
+                    b.HasOne("Domain.Entities.Clinic", "Clinic")
+                        .WithMany()
+                        .HasForeignKey("ClinicId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Clinic");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ToothProcedure", b =>
+                {
+                    b.HasOne("Domain.Entities.Patient", "Patient")
+                        .WithMany("ToothProcedures")
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Procedure", "Procedure")
+                        .WithMany()
+                        .HasForeignKey("ProcedureId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Patient");
+
+                    b.Navigation("Procedure");
+                });
+
+            modelBuilder.Entity("Domain.Entities.TreatmentPlan", b =>
+                {
+                    b.HasOne("Domain.Entities.Patient", "Patient")
+                        .WithMany("TreatmentPlans")
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Patient");
+                });
+
             modelBuilder.Entity("Domain.Entities.UserClinic", b =>
                 {
                     b.HasOne("Domain.Entities.Clinic", "Clinic")
@@ -593,6 +736,10 @@ namespace Infrastructure.Migrations
                     b.Navigation("OdontogramEntries");
 
                     b.Navigation("PatientMedias");
+
+                    b.Navigation("ToothProcedures");
+
+                    b.Navigation("TreatmentPlans");
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>

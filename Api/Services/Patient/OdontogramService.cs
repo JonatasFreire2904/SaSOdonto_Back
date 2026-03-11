@@ -114,5 +114,85 @@ namespace Api.Services
                 Notes = entry.Notes
             };
         }
+
+        public async Task<ToothProcedureResponse?> AddToothProcedureAsync(Guid userId, Guid clinicId, Guid patientId, CreateToothProcedureRequest request)
+        {
+            if (!await UserHasAccessAsync(userId, clinicId))
+                return null;
+
+            var patientExists = await _db.Patients.AnyAsync(p => p.Id == patientId && p.ClinicId == clinicId);
+            if (!patientExists)
+                return null;
+
+            var procedure = await _db.Procedures.FirstOrDefaultAsync(p => p.Id == request.ProcedureId && p.ClinicId == clinicId);
+            if (procedure == null)
+                return null;
+
+            var toothProcedure = new ToothProcedure
+            {
+                ToothNumber = request.ToothNumber,
+                ProcedureId = request.ProcedureId,
+                Faces = request.Faces,
+                Notes = request.Notes,
+                PatientId = patientId
+            };
+
+            _db.ToothProcedures.Add(toothProcedure);
+            await _db.SaveChangesAsync();
+
+            return new ToothProcedureResponse
+            {
+                Id = toothProcedure.Id,
+                ToothNumber = toothProcedure.ToothNumber,
+                ProcedureName = procedure.Name,
+                ProcedureCategory = procedure.Category,
+                Faces = toothProcedure.Faces,
+                Notes = toothProcedure.Notes,
+                CreatedAt = toothProcedure.CreatedAt
+            };
+        }
+
+        public async Task<List<ToothProcedureResponse>?> GetToothProceduresAsync(Guid userId, Guid clinicId, Guid patientId)
+        {
+            if (!await UserHasAccessAsync(userId, clinicId))
+                return null;
+
+            var patientExists = await _db.Patients.AnyAsync(p => p.Id == patientId && p.ClinicId == clinicId);
+            if (!patientExists)
+                return null;
+
+            return await _db.ToothProcedures
+                .Where(tp => tp.PatientId == patientId)
+                .Include(tp => tp.Procedure)
+                .OrderByDescending(tp => tp.CreatedAt)
+                .Select(tp => new ToothProcedureResponse
+                {
+                    Id = tp.Id,
+                    ToothNumber = tp.ToothNumber,
+                    ProcedureName = tp.Procedure.Name,
+                    ProcedureCategory = tp.Procedure.Category,
+                    Faces = tp.Faces,
+                    Notes = tp.Notes,
+                    CreatedAt = tp.CreatedAt
+                })
+                .ToListAsync();
+        }
+
+        public async Task<bool?> DeleteToothProcedureAsync(Guid userId, Guid clinicId, Guid patientId, Guid toothProcedureId)
+        {
+            if (!await UserHasAccessAsync(userId, clinicId))
+                return null;
+
+            var tp = await _db.ToothProcedures
+                .Include(t => t.Patient)
+                .FirstOrDefaultAsync(t => t.Id == toothProcedureId && t.PatientId == patientId && t.Patient.ClinicId == clinicId);
+
+            if (tp == null)
+                return false;
+
+            _db.ToothProcedures.Remove(tp);
+            await _db.SaveChangesAsync();
+            return true;
+        }
     }
 }

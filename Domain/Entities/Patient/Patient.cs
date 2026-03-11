@@ -23,5 +23,7 @@ namespace Domain.Entities
         public ICollection<OdontogramEntry> OdontogramEntries { get; set; } = new List<OdontogramEntry>();
         public ICollection<PatientMedia> PatientMedias { get; set; } = new List<PatientMedia>();
         public Anamnesis? Anamnesis { get; set; }
+        public ICollection<TreatmentPlan> TreatmentPlans { get; set; } = new List<TreatmentPlan>();
+        public ICollection<ToothProcedure> ToothProcedures { get; set; } = new List<ToothProcedure>();
     }
 }
